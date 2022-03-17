@@ -27,9 +27,22 @@ class Game {
         }
         this.clics++;
         this.cards[cardIndex].turn();
-        this.checkPair();
         this.playedCards.push(this.cards[cardIndex]);
-    }
+
+        this.cards.forEach((card, i) => {
+            let cardDiv =  document.querySelector(`.card[data-index = "${i}"]`);
+            if(card.state == 1){
+                   cardDiv.classList.add('visible')
+            }else{
+               cardDiv.classList.remove('visible')
+            }
+        });
+        this.checkPair();
+
+
+
+        }
+
 
     checkPair(){
         if (this.playedCards.length < 2) {
@@ -39,7 +52,19 @@ class Game {
             this.checkWin();
         }else{
             this.playedCards[0].turn();
-            this.playedCards[1].turn()
+            this.playedCards[1].turn();
+
+            setTimeout(() => {
+
+                this.cards.forEach((card, i) => {
+                    let cardDiv =  document.querySelector(`.card[data-index = "${i}"]`);
+                    if(card.state == 1){
+                           cardDiv.classList.add('visible')
+                    }else{
+                       cardDiv.classList.remove('visible')
+                    }
+                });
+            }, 1000);
         }
         this.playedCards = [];
 
@@ -60,10 +85,13 @@ class Game {
             let cardDiv = document.createElement("div")
             let newContent = document.createTextNode(element.value);
             cardDiv.setAttribute('data-index', i);
+            cardDiv.classList.add('card');
             cardDiv.appendChild(newContent);
             div.appendChild(cardDiv)
         }
-
+          div.addEventListener("click",e => {
+              this.play(e.target.dataset.index)
+          })
         return cards;
 
     }
