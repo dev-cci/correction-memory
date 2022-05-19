@@ -1,0 +1,22 @@
+{
+  "name": "correction-memory",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dev-cci/correction-memory.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dev-cci/correction-memory/issues"
+  },
+  "homepage": "https://github.com/dev-cci/correction-memory#readme",
+  "devDependencies": {
+    "jest": "^28.1.0"
+  }
+}
